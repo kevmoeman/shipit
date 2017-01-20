@@ -38,8 +38,8 @@ class Packagedao(object):
         return pkglst
 
 
-#querys individual packages from the query packages row[0]
-#gotta connect in all of them
+#querys individual packages
+
     def query_package(self, pkgid):
         conn = pymysql.connect(user=self.username,
                                password=self.password,
@@ -64,7 +64,7 @@ class Packagedao(object):
 
     def insert_package(self, package):
         #inserts a new package into the database.
-        #connect ot db
+        #connect to db
         conn = pymysql.connect(user=self.username,
                                password=self.password,
                                host=self.host,
