@@ -6,5 +6,8 @@
    --  addr_state TEXT,
 
 
-INSERT INTO address(addr_id, addr_person)
-VALUES (1, 'ROBBY1'),(2, 'codder'), (3, 'vanzee')
+INSERT INTO address(addr_id, addr_person, addr_street, 
+addr_zip, addr_city, addr_state)
+VALUES (1, 'ROBBY1', '9231 robby ln', 45632, 'WI'),
+(2, 'codder', '23425 codder ave', 34342, 'WI'), 
+(3, 'vanzee', '345345 vz cir', 22334, 'WA')

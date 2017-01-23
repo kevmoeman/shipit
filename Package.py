@@ -1,6 +1,10 @@
 import pymysql
+from random import randint
 
-
+def random_with_N_digits(n):
+    range_start = 10**(n-1)
+    range_end = (10**n)-1
+    return randint(range_start, range_end)
 
 class Package(object):
     def __init__(self, id, size_id, src_id, dst_id):
