@@ -1,0 +1,13 @@
+#package-container tbody {
+    display:block;
+    height:200px;
+    overflow:auto;
+}
+#package-container thead, tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+}
+#package-container thead {
+    width: calc( 100% - 1em )
+}
