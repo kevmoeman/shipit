@@ -37,54 +37,10 @@ class Packagedao(object):
         conn.close()
         return pkglst
 
-    def query_addresses(self):
-        addrlst = []
-        conn = pymysql.connect(user=self.username,
-                               password=self.password,
-                               host=self.host,
-                               database=self.db)
-        cur = conn.cursor()
 
-        cur.execute( \
-        """
-        SELECT *
-        FROM address
-
-        """
-        )
-        for row in cur:
-            print(row)
-            a = adr.Address(adrid=row[0], person=row[1], street=row[2],
-                          zipcode=row[3], city=row[4], state=row[5])
-            addrlst.append(a)
-        cur.close()
-
-        conn.close()
-        return addrlst
 #querys individual packages
 
     def query_package(self, pkgid):
-        conn = pymysql.connect(user=self.username,
-                               password=self.password,
-                               host=self.host,
-                               database=self.db)
-        cur = conn.cursor()
-
-        cur.execute("SELECT * FROM package WHERE pkgid =%s", (pkgid))
-        row = cur.fetchone()
-
-        if row:
-            p = pkg.Package(id=row[0], size_id=row[1], src_id=row[2],
-                      dst_id=row[3])
-        else:
-            p = None
-
-        cur.close()
-
-        conn.close()
-        return p
-
-    def query_person(self, pkgid):
         conn = pymysql.connect(user=self.username,
                                password=self.password,
                                host=self.host,

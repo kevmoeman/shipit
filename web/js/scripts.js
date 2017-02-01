@@ -1,66 +1,72 @@
-var mockdata =
-[
-    {
-        "id": '1x23',
-        "size": "small",
-        "src": {
-          "addr_id": 1,
-          "addr_person": "Rob Base",
-          "addr_street": "123 Code St",
-          "addr_city":"Minneapolis",
-          "addr_state":"MN",
-          "addr_zip": "55414"
-        },
-        "dst": {
-          "addr_id": 2,
-          "addr_person": "Van Stacker",
-          "addr_street": "42 Engi Ln",
-          "addr_city":"Seattle",
-          "addr_state":"WA",
-          "addr_zip": "98109"
-        }
-    },
-    {
-        "id": 'avd14',
-        "size": "small",
-        "src": {
-          "addr_id": 1,
-          "addr_person": "Rob Base",
-          "addr_street": "123 Code St",
-          "addr_city":"Minneapolis",
-          "addr_state":"MN",
-          "addr_zip": "55414"
-        },
-        "dst": {
-          "addr_id": 3,
-          "addr_person": "Connor B. Zee",
-          "addr_street": "42 Engi Ln",
-          "addr_city":"Seattle",
-          "addr_state":"WA",
-          "addr_zip": "98109"
-        }
-    },
-    {
-        "id": 'xx214',
-        "size": "small",
-        "src": {
-          "addr_id": 3,
-          "addr_person": "Connor B. Zee",
-          "addr_street": "42 Engi Ln",
-          "addr_city":"Seattle",
-          "addr_state":"WA",
-          "addr_zip": "98109"
-        },
-        "dst": {
-          "addr_id": 1,
-          "addr_person": "Rob Base",
-          "addr_street": "123 Code St",
-          "addr_city":"Minneapolis",
-          "addr_state":"MN",
-          "addr_zip": "55414"
-        }
-    },
-];
+var request = new XMLHttpRequest();
+  var status = request.status;
+  var data = request.responseText;
+request.open(method, url, async);
+  request.send(postData);
+
+// var mockdata =
+// [
+//     {
+//         "id": '1x23',
+//         "size": "small",
+//         "src": {
+//           "addr_id": 1,
+//           "addr_person": "Rob Base",
+//           "addr_street": "123 Code St",
+//           "addr_city":"Minneapolis",
+//           "addr_state":"MN",
+//           "addr_zip": "55414"
+//         },
+//         "dst": {
+//           "addr_id": 2,
+//           "addr_person": "Van Stacker",
+//           "addr_street": "42 Engi Ln",
+//           "addr_city":"Seattle",
+//           "addr_state":"WA",
+//           "addr_zip": "98109"
+//         }
+//     },
+//     {
+//         "id": 'avd14',
+//         "size": "small",
+//         "src": {
+//           "addr_id": 1,
+//           "addr_person": "Rob Base",
+//           "addr_street": "123 Code St",
+//           "addr_city":"Minneapolis",
+//           "addr_state":"MN",
+//           "addr_zip": "55414"
+//         },
+//         "dst": {
+//           "addr_id": 3,
+//           "addr_person": "Connor B. Zee",
+//           "addr_street": "42 Engi Ln",
+//           "addr_city":"Seattle",
+//           "addr_state":"WA",
+//           "addr_zip": "98109"
+//         }
+//     },
+//     {
+//         "id": 'xx214',
+//         "size": "small",
+//         "src": {
+//           "addr_id": 3,
+//           "addr_person": "Connor B. Zee",
+//           "addr_street": "42 Engi Ln",
+//           "addr_city":"Seattle",
+//           "addr_state":"WA",
+//           "addr_zip": "98109"
+//         },
+//         "dst": {
+//           "addr_id": 1,
+//           "addr_person": "Rob Base",
+//           "addr_street": "123 Code St",
+//           "addr_city":"Minneapolis",
+//           "addr_state":"MN",
+//           "addr_zip": "55414"
+//         }
+//     },
+// ];
 
 function displayPackageDetails(p){
   // updates the DOM to display a packages details.

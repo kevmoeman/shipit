@@ -2,9 +2,12 @@ import tornado.ioloop
 import tornado.web
 import json
 import Package
-import Packagedao
+import Packagedao as pdao
 import config
 import Address
+import AddressDao as adao
+import StationDao as sdao
+import VehicleDao as vdao
 
 
 
@@ -54,14 +57,14 @@ class PackageHandler(CorsHandler):
 
 class PersonHandler(CorsHandler):
     def initialize(self, dao):
-        self.pdao = dao
+        self.adao = dao
 
     def post(self):
         print(self.request.body)
         self.write(tornado.escape.json_encode(rtv))
 
     def get(self):
-        addresses = self.pdao.query_addresses()
+        addresses = self.adao.query_addresses()
         print(addresses)
 
 def make_app(dickhead):
@@ -73,7 +76,16 @@ def make_app(dickhead):
 
 if __name__ == "__main__":
     #start the server
-    packagedao = Packagedao.Packagedao(config.username, config.password,
+    packagedao = pdao.Packagedao(config.username, config.password,
+                                     config.host, config.database)
+
+    addressdao = adao.Addressdao(config.username, config.password,
+                                     config.host, config.database)
+
+    vehicledao = vdao.Vehicledao(config.username, config.password,
+                                     config.host, config.database)
+
+    Stationdao = sdao.Stationdao(config.username, config.password,
                                      config.host, config.database)
     app = make_app(packagedao)
     app.listen(8080)
@@ -87,7 +99,7 @@ if __name__ == "__main__":
 
     #queury package check for same
 
-
+    print(AddressDao.query_addresses)
 
 
     #save package to db
