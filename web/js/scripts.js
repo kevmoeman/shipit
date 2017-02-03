@@ -1,8 +1,4 @@
-var request = new XMLHttpRequest();
-  var status = request.status;
-  var data = request.responseText;
-request.open(method, url, async);
-  request.send(postData);
+
 
 // var mockdata =
 // [
@@ -85,49 +81,50 @@ function displayPackageDetails(p){
 
 }
 
+
 // Page-Global packages indexed by Id
 var packages = {}
 var selected = ''
+function on_packages_load(data){
+  // Delete the current package index
+  packages = {}
+  // index by package id for use in other fuctions on the page.
+  for (var i = 0; i < data.length; i++){
+    p = data[i];
+    if(p.id in packages){
+      console.log('Violated unique Id constraint for packages!! p.id='+p.id)
+      p.id = p.id+'--'+i
+    }
+
+    packages[p.id] = p;
+  }
+
+  var mydata = []
+  for(var p_id in packages){
+    p = packages[p_id]
+
+    mydata.push({
+      "id":p.id,
+      "size":p.size,
+      "src":p.src.addr_person,
+      "dst":p.dst.addr_person
+    })
+  }
+
+  $('#package-table').bootstrapTable({
+      data: mydata
+  });
+
+  // Register click handler for the package table rows
+  $('#package-table > tbody > tr').click(function() {
+    // 'this' is the selected html table row
+    pkg_idx = $(this).attr('data-index');
+    p_id = mydata[pkg_idx].id;
+    console.log('clicked package:'+ p_id);
+    displayPackageDetails(packages[p_id]);
+  });
+}
+
 $(function () {
-    // todo Query service and get package information.
-    // data = http get on packages resource
-
-    // Delete the current package index
-    packages = {}
-
-    // index by package id for use in other fuctions on the page.
-    for (var i = 0; i < mockdata.length; i++){
-      p = mockdata[i];
-      if(p.id in packages){
-        console.log('Violated unique Id constraint for packages!! p.id='+p.id)
-        p.id = p.id+'--'+i
-      }
-
-      packages[p.id] = p;
-    }
-
-    var mydata = []
-    for(var p_id in packages){
-      p = packages[p_id]
-
-      mydata.push({
-        "id":p.id,
-        "size":p.size,
-        "src":p.src.addr_person,
-        "dst":p.dst.addr_person
-      })
-    }
-
-    $('#package-table').bootstrapTable({
-        data: mydata
-    });
-
-    // Register click handler for the package table rows
-    $('#package-table > tbody > tr').click(function() {
-      // 'this' is the selected html table row
-      pkg_idx = $(this).attr('data-index');
-      p_id = mydata[pkg_idx].id;
-      console.log('clicked package:'+ p_id);
-      displayPackageDetails(packages[p_id]);
-    });
+    $.getJSON('http://localhost:8080/packages', on_packages_load);
 });

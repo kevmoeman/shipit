@@ -1,4 +1,3 @@
-import pymysql
 from random import randint
 
 def random_with_N_digits(n):

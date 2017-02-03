@@ -1,4 +1,5 @@
 import Address
+import pymysql
 
 class Addressdao(object):
     def __init__(self, username, password, host, db):
@@ -23,8 +24,7 @@ class Addressdao(object):
         """
         )
         for row in cur:
-            print(row)
-            a = adr.Address(adrid=row[0], person=row[1], street=row[2],
+            a = Address.Address(adrid=row[0], person=row[1], street=row[2],
                           zipcode=row[3], city=row[4], state=row[5])
             addrlst.append(a)
         cur.close()

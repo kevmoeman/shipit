@@ -1,7 +1,7 @@
 import pymysql
 import Package as p
 import Packagedao as pdao
-import config
+from config import config
 
 
 
