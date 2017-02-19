@@ -1,4 +1,4 @@
-class Address(object):
+class Station(object):
     def __init__(self, stationid, phonenumber, st_street, st_zipcode, st_city, st_state):
         self.stationid = stationid
         self.phonenumber = phonenumber

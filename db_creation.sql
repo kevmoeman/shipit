@@ -37,21 +37,26 @@ CREATE TABLE package (
 
 );
 
-CREATE TABLE vehicle (
-	vehicle_id VARCHAR(10) COMMENT 'Vehicle internal company string' ,
-	company VARCHAR(10),
-    PRIMARY KEY(vehicle_id)
-);
-
 CREATE TABLE station (
-	stationid VARCHAR(10) COMMENT 'station identification string',
+	stationid VARCHAR(64) COMMENT 'station identification string',
 	st_street VARCHAR(40),
     st_zip INTEGER,
     st_city TEXT,
     st_state TEXT,
 	phonenumber BIGINT UNSIGNED,
-    PRIMARY KEY(stationid)
+    PRIMARY KEY (stationid)
 );
+
+
+CREATE TABLE vehicle (
+	vehicle_id VARCHAR(20) COMMENT 'Vehicle internal company string' ,
+	company VARCHAR(20),
+    location VARCHAR(64),
+    PRIMARY KEY(vehicle_id),
+    FOREIGN KEY (location) REFERENCES station(stationid)
+);
+
+
 
 CREATE TABLE package_status_codes ( -- insert status codes
 	package_status_id_code INTEGER,

@@ -1,4 +1,6 @@
 import Station
+import pymysql
+
 
 class Stationdao(object):
     def __init__(self, username, password, host, db):

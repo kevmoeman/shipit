@@ -83,12 +83,15 @@ function displayPackageDetails(p){
 
 
 // Page-Global packages indexed by Id
+// var vehicles = {}
+// var stations = {}
 var packages = {}
 var selected = ''
 function on_packages_load(data){
   // Delete the current package index
   packages = {}
   // index by package id for use in other fuctions on the page.
+  //data validation
   for (var i = 0; i < data.length; i++){
     p = data[i];
     if(p.id in packages){
@@ -127,4 +130,64 @@ function on_packages_load(data){
 
 $(function () {
     $.getJSON('http://localhost:8080/packages', on_packages_load);
+});
+
+
+//  Vehicle page section
+function displayVehicleDetails(v){
+  // updates the DOM to display a vehicles details.
+  // v is a package json
+  $('#detail_vehicleid').prop('value',v.vehicle_id);
+  $('#detail_Company').val(v.company);
+  $('#detail_Location').val(v.st_city);
+
+}
+
+// Page-Global packages indexed by Id
+// var vehicles = {}
+// var stations = {}
+var vehicles = {}
+var selected = ''
+function on_vehicles_load(data){
+  // Delete the current package index
+  vehicles = {}
+  // index by package id for use in other fuctions on the page.
+  //data validation
+  for (var i = 0; i < data.length; i++){
+    v = data[i];
+    if(v.id in packages){
+      console.log('Violated unique Id constraint for packages!! p.id='+p.id)
+      v.id = v.id+'--'+i
+    }
+
+    vehicles[v.id] = v;
+  }
+
+  var mydata = []
+  for(var v_id in vehicles){
+    v = vehicles[v_id]
+
+    mydata.push({
+      "id":v.id,
+      "company":v.company,
+      "location":v.location.st_city,
+    })
+  }
+
+  $('#vehicle-table').bootstrapTable({
+      data: mydata
+  });
+
+  // Register click handler for the package table rows
+  $('#vehicle-table > tbody > tr').click(function() {
+    // 'this' is the selected html table row
+    vehicle_idx = $(this).attr('data-index');
+    v_id = mydata[vehicle_idx].id;
+    console.log('clicked vehicle:'+ v_id);
+    displayvehicleDetails(vehicles[v_id]);
+  });
+}
+
+$(function () {
+    $.getJSON('http://localhost:8080/vehicles', on_vehicles_load);
 });
