@@ -27,7 +27,7 @@ class Vehicledao(object):
 
         for row in cur:
             print(row)
-            p = Vehicle.Vehicle(id=row[0], company=row[1], location=[row[2]])
+            p = Vehicle.Vehicle(id=row[0], company=row[1], location=row[2])
             vehiclelst.append(p)
 
         cur.close()

@@ -124,13 +124,18 @@ class VehicleStationHandler(CorsHandler):
         self.vehicle_dao = vehicle_dao
         self.station_dao = station_dao
 
+    def post(self):
+        print(self.request.body)
+        self.write(tornado.escape.json_encode('{}'))
+
+
     def get(self):
         """
             [
                 {
-                    "id": '1x23',
+                    "id": '123',
                     "company": "van stackers",
-                    "location": {
+                    "location": '1'{
                       "station_id": 1,
                       "station_street": "123 Code St",
                       "station_city":"Minneapolis",
@@ -150,13 +155,15 @@ class VehicleStationHandler(CorsHandler):
             # first convert vehicle attributes to json
             vj = vehicle_to_json(v)
 
-
+            #match the # of vehicles to # of stations OR figure out a better way
             # then convert the nested addresses to json
-            #TODO MAKE THIS THING WORK
-            # locationj = station_to_json(station_lookup[vj['location']])
-            # vj['location'] = locationj
-            #
-            # vehicle_jsons.append(vj)
+            print(vj)
+
+
+            locationj = station_to_json(station_lookup[vj['location']])
+            vj['location'] = locationj
+
+            vehicle_jsons.append(vj)
 
         self.write(tornado.escape.json_encode(vehicle_jsons))
                 # for p in packages:
@@ -171,25 +178,24 @@ class VehicleStationHandler(CorsHandler):
                 #     package_jsons.append(pj)
                 #
                 # self.write(tornado.escape.json_encode(package_jsons))
-
-def station_to_json(addr):
+def station_to_json(st):
     aj = {
-      "stationid": st.adrid,
-      "st_street":  st.street,
-      "st_city": st.city,
-      "st_state": st.state,
-      "st_zip":  st.zipcode,
-      "phonenumber" : st.phonenumber
-    }
+          "stationid": st.stationid,
+          "st_street":  st.st_street,
+          "st_city": st.st_city,
+          "st_state": st.st_state,
+          "st_zip":  st.st_zipcode,
+          "phonenumber" : st.phonenumber
+        }
 
     return aj
 
 
 
 def vehicle_to_json(v):
-    vj = {'id':v.id,
-        'company':v.company,
-        'location':v.location
+    vj = {'id' : v.id,
+        'company' : v.company,
+        'location' : v.location
         }
 
     return vj
