@@ -1,6 +1,6 @@
 class Vehicle(object):
-    def __init__(self, id, company, location):
-        self.id = id
+    def __init__(self, vehicle_id, company, location):
+        self.vehicle_id = vehicle_id
         self.company = company
         self.location = location
 

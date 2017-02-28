@@ -193,7 +193,7 @@ def station_to_json(st):
 
 
 def vehicle_to_json(v):
-    vj = {'id' : v.id,
+    vj = {'vehicle_id' : v.vehicle_id,
         'company' : v.company,
         'location' : v.location
         }

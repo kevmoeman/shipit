@@ -27,7 +27,7 @@ class Vehicledao(object):
 
         for row in cur:
             print(row)
-            p = Vehicle.Vehicle(id=row[0], company=row[1], location=row[2])
+            p = Vehicle.Vehicle(vehicle_id=row[0], company=row[1], location=row[2])
             vehiclelst.append(p)
 
         cur.close()
@@ -49,7 +49,7 @@ class Vehicledao(object):
         INSERT INTO vehicle(vehicle_id, company, location)
         VALUES (%s, %s, %s)
         """
-        cur.execute(add_vehicle_sql, (Vehicle.id,
+        cur.execute(add_vehicle_sql, (Vehicle.vehicle_id,
                                       Vehicle.company,
                                       Vehicle.location
                                       ))

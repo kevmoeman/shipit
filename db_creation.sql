@@ -38,7 +38,7 @@ CREATE TABLE package (
 );
 
 CREATE TABLE station (
-	stationid VARCHAR(64) COMMENT 'station identification string',
+	stationid INTEGER COMMENT 'station identification string',
 	st_street VARCHAR(40),
     st_zip INTEGER,
     st_city TEXT,
@@ -49,9 +49,9 @@ CREATE TABLE station (
 
 
 CREATE TABLE vehicle (
-	vehicle_id VARCHAR(20) COMMENT 'Vehicle internal company string' ,
+	vehicle_id INTEGER COMMENT 'Vehicle internal company string' ,
 	company VARCHAR(20),
-    location VARCHAR(64),
+    location INTEGER,
     PRIMARY KEY(vehicle_id),
     FOREIGN KEY (location) REFERENCES station(stationid)
 );
@@ -66,8 +66,8 @@ CREATE TABLE package_status_codes ( -- insert status codes
 CREATE TABLE packagestate (
     package_state_id BIGINT auto_increment,
 	pkgid INTEGER,
-	stationid VARCHAR(10),  -- enforce @ applciation level that only 1 is set.
-    vehicle_id VARCHAR(10),  -- enforce @ applciation level that only 1 is set.
+	stationid INTEGER,  -- enforce @ applciation level that only 1 is set.
+    vehicle_id INTEGER,  -- enforce @ applciation level that only 1 is set.
 	package_status_id_code INTEGER,
     ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY(package_state_id),
@@ -81,8 +81,8 @@ CREATE TABLE vehicle_status_codes ( -- insert vehicle codes
 );
 
 CREATE TABLE vehiclestate (
-	vehicle_id VARCHAR(10),
-	stationid VARCHAR(10),
+	vehicle_id INTEGER,
+	stationid INTEGER,
 	vehicle_state_id INTEGER,
 	FOREIGN KEY(vehicle_id) REFERENCES vehicle(vehicle_id),
     FOREIGN KEY(stationid) REFERENCES station(stationid),
