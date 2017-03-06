@@ -39,11 +39,12 @@ CREATE TABLE package (
 
 CREATE TABLE station (
 	stationid INTEGER COMMENT 'station identification string',
-	st_street VARCHAR(40),
-    st_zip INTEGER,
+	phonenumber BIGINT UNSIGNED,
+    st_street VARCHAR(40),
+    st_zip INTEGER.
     st_city TEXT,
     st_state TEXT,
-	phonenumber BIGINT UNSIGNED,
+	
     PRIMARY KEY (stationid)
 );
 

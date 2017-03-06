@@ -5,10 +5,10 @@ function displayVehicleDetails(v){
   $('#detail_vehicleid').prop('value',v.vehicle_id);
   $('#detail_Company').val(v.company);
   $('#detail_Location').val(v.location.st_city);
-
   $('#detail_stationstreet').val(v.location.st_street)
-  $('detail_stationzip').val(v.location.station_zip)
-  $('detail_stationstate').val(v.location.phonenumber)
+  $('#detail_stationzip').val(v.location.st_zip)
+  $('#detail_stationstate').val(v.location.st_state)
+  $('#detail_phonenumber').val(v.location.phonenumber)
 }
 
 // Page-Global packages indexed by Id
@@ -42,7 +42,19 @@ function on_vehicles_load(data){
       "location":v.location.st_city,
     })
   }
+  var alldata = []
+  for(var v_id in vehicles){
+    v = vehicles[v_id]
 
+    alldata.push({
+      "id":v.vehicle_id,
+      "company":v.company,
+      "Address":v.location.st_street,
+      "State":v.location.st_state,
+      "Zip":v.location.st_zipcode,
+      "Phonenumber":v.location.phonenumber,
+    })
+  }
   $('#vehicle-table').bootstrapTable({
       data: mydata
   });
@@ -51,7 +63,7 @@ function on_vehicles_load(data){
   $('#vehicle-table > tbody > tr').click(function() {
     // 'this' is the selected html table row
     vehicle_idx = $(this).attr('data-index');
-    v_id = mydata[vehicle_idx].id;
+    v_id = alldata[vehicle_idx].id;
     console.log('clicked vehicle:'+ v_id);
     displayVehicleDetails(vehicles[v_id]);
   });

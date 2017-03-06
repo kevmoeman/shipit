@@ -80,14 +80,13 @@
     </form>
   </div>
 
-  <div class="container" id="vehicle-container">
+  <div class="container" id="package-container">
     <table class="table table-striped " id="vehicle-table">
       <thead>
           <tr>
               <th data-field="id">Vehicle Id</th>
               <th data-field="company">Vehicle Company</th>
               <th data-field="location">Vehicle Location</th>
-
           </tr>
       </thead>
       <tbody>
@@ -123,21 +122,28 @@
                 <!-- address -->
               <div class="form-group row">
 
-                <label for="detail_Location" class="col-sm-2 col-form-label col-form-label-sm">Station Address</label>
+                <label for="detail_Location" class="col-sm-2 col-form-label col-form-label-sm">Station City</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control form-control-lg" id="detail_Location" placeholder="street" readonly="readonly">
+                  <input type="text" class="form-control form-control-lg" id="detail_Location" placeholder="City" readonly="readonly">
+                </div>
+              </div>
+              <div class="form-group row">
+
+                <label for="detail_stationstreet" class="col-sm-2 col-form-label col-form-label-sm">Station Street</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control form-control-lg" id="detail_stationstreet" placeholder="Street" readonly="readonly">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="detail_stationstate" class="col-sm-2 col-form-label col-form-label-sm">State</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control form-control-lg" id="detail_station_state" placeholder="state" readonly="readonly">
+                  <input type="text" class="form-control form-control-lg" id="detail_stationstate" placeholder="state" readonly="readonly">
                 </div>
               </div>
               <div class="form-group row">
-                <label for="detail_stationzip" class="col-sm-2 col-form-label col-form-label-sm">Zip</label>
+                <label for="detail_stationzip" class="col-sm-2 col-form-label col-form-label-sm">Zipcode</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control form-control-lg" id="detail_station_zip" placeholder="zip" readonly="readonly">
+                  <input type="text" class="form-control form-control-lg" id="detail_stationzip" placeholder="zip" readonly="readonly">
                 </div>
               </div>
             <div class="form-group row">

@@ -181,15 +181,14 @@ class VehicleStationHandler(CorsHandler):
 def station_to_json(st):
     aj = {
           "stationid": st.stationid,
-          "st_street":  st.st_street,
           "st_city": st.st_city,
+          "st_street":  st.st_street,
           "st_state": st.st_state,
           "st_zip":  st.st_zipcode,
           "phonenumber" : st.phonenumber
         }
 
     return aj
-
 
 
 def vehicle_to_json(v):
