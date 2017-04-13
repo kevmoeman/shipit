@@ -117,7 +117,6 @@ function on_packages_load(data){
   $('#package-table').bootstrapTable({
       data: mydata
   });
-
   // Register click handler for the package table rows
   $('#package-table > tbody > tr').click(function() {
     // 'this' is the selected html table row

@@ -14,7 +14,7 @@ VALUES (1, 'ROBBY1', '9231 robby ln', 45632, 'rby', 'WI'),
 
 
 INSERT INTO package(pkgid, packagesize_id, src_id, dst_id)
-VALUES (1, 2, 3, 2), (2, 3, 2, 3), (3, 1, 1, 2);
+VALUES (1, 2, 3, 2), (2, 3, 2, 3), (3, 1, 1, 2), (4, 2, 1, 3);
 
 INSERT INTO station(stationid, st_street, st_zip, st_city, 
 st_state, phonenumber)
@@ -22,6 +22,7 @@ VALUES (1, '8534 industrial lane', 55345, 'Minneapolis', 'MN',
 7828856666),
 (2, '44325 shipper st', 55443, 'Vanville', 'OK',
 9926523322);
+
 
 
 INSERT INTO vehicle(vehicle_id, company, location)
