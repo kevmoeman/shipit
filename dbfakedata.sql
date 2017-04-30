@@ -8,13 +8,13 @@
 
 INSERT INTO address(addr_id, addr_person, addr_street, 
 addr_zip, addr_city, addr_state)
-VALUES (1, 'ROBBY1', '9231 robby ln', 45632, 'rby', 'WI'),
-(2, 'codder', '23425 codder ave', 34342, 'grn bay', 'WI'), 
-(3, 'vanzee', '345345 vz cir', 22334, 'fancytown','WA');
+VALUES (1, 'John Smith', '9231 robby ln', 45632, 'rby', 'WI'),
+(2, 'Jill Doe', '23425 codder ave', 34342, 'grn bay', 'WI'), 
+(3, 'Andy Landson', '345345 vz cir', 22334, 'fancytown','WA');
 
 
 INSERT INTO package(pkgid, packagesize_id, src_id, dst_id)
-VALUES (1, 2, 3, 2), (2, 3, 2, 3), (3, 1, 1, 2), (4, 2, 1, 3);
+VALUES (1, 2, 3, 2), (2, 3, 2, 3), (3, 1, 1, 2), (4, 2, 1, 3), (5, 1, 3, 2), (6, 2, 2, 1);
 
 INSERT INTO station(stationid, st_street, st_zip, st_city, 
 st_state, phonenumber)
